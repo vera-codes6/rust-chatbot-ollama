@@ -42,6 +42,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 .send()
                 .await?;
 
+
             let mut message = String::default();
             while let Some(chunk) = res.chunk().await? {
                 if let Ok(resp_part) = serde_json::from_slice::<Response>(&chunk) {
@@ -61,6 +62,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                     role: String::from("assistant"),
                     content: message,
                 });
+                
             }
         }
 
