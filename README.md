@@ -22,8 +22,6 @@ It streams responses token-by-token using Ollama's `/api/chat` endpoint and main
 	ollama serve
 	```
 
-	
-
 2) Run the chatbot in a new terminal
 
 ```powershell
