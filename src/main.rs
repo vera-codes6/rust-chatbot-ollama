@@ -26,8 +26,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     stdout.write_all(b"\n> ").await?;
     stdout.flush().await?;
+
     while let Some(line) = lines.next_line().await? {
         if !line.is_empty() {
+
             messages.push(Message {
                 role: String::from("user"),
                 content: line,
@@ -71,5 +73,5 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         stdout.flush().await?;
     }
 
-    Ok(())
+    return Ok(());
 }
