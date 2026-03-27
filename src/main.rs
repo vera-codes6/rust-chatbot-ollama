@@ -21,15 +21,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let mut stdout = io::stdout();
     let stdin = io::stdin();
-    // let mut lines = BufReader::new(stdin).lines();
     let mut lines = BufReader::new(stdin).lines();
 
     stdout.write_all(b"\n> ").await?;
     stdout.flush().await?;
-
     while let Some(line) = lines.next_line().await? {
         if !line.is_empty() {
-
             messages.push(Message {
                 role: String::from("user"),
                 content: line,
@@ -44,7 +41,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 }))
                 .send()
                 .await?;
-
 
             let mut message = String::default();
             while let Some(chunk) = res.chunk().await? {
@@ -65,7 +61,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                     role: String::from("assistant"),
                     content: message,
                 });
-                
             }
         }
 
