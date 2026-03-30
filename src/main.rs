@@ -50,7 +50,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                             .write_all(resp_part.message.content.as_bytes())
                             .await?;
                         stdout.flush().await?;
-
                         message.push_str(&resp_part.message.content);
                     }
                 }
