@@ -1,7 +1,6 @@
 # rust-ai-chatbot-ollama
 
 A tiny CLI chatbot written in Rust that talks to a locally running LLM via the Ollama HTTP API.
-
 It streams responses token-by-token using Ollama's `/api/chat` endpoint and maintains a running conversation in-memory.
 
 ## Prerequisites
@@ -27,6 +26,13 @@ It streams responses token-by-token using Ollama's `/api/chat` endpoint and main
 ```powershell
 cargo run
 ```
+
+or 
+
+```powershell
+cargo build
+```
+and then run the application in target folder.
 
 Type your prompt at the `>` prompt and watch the streamed reply. Press Ctrl+C to exit.
 

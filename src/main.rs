@@ -21,7 +21,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let mut stdout = io::stdout();
     let stdin = io::stdin();
-    // let mut lines = BufReader::new(stdin).lines();
     let mut lines = BufReader::new(stdin).lines();
 
     stdout.write_all(b"\n> ").await?;
@@ -43,7 +42,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 .send()
                 .await?;
 
-
             let mut message = String::default();
             while let Some(chunk) = res.chunk().await? {
                 if let Ok(resp_part) = serde_json::from_slice::<Response>(&chunk) {
@@ -52,7 +50,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                             .write_all(resp_part.message.content.as_bytes())
                             .await?;
                         stdout.flush().await?;
-
                         message.push_str(&resp_part.message.content);
                     }
                 }
@@ -63,7 +60,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                     role: String::from("assistant"),
                     content: message,
                 });
-                
             }
         }
 
@@ -71,5 +67,5 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         stdout.flush().await?;
     }
 
-    Ok(())
+    return Ok(());
 }
